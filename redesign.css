@@ -913,3 +913,102 @@ body {
   .system-shell.is-open .system-world .node-pascal { left: var(--left); top: var(--top); }
   .system-shell.is-open .system-world .node-descartes { left: var(--left); top: var(--top); }
 }
+
+
+/* v0.7.7 — a distributed star map, with several independent orbital centres */
+.node-popov { --left: 50%; --top: 8%; }
+.node-newton { --left: 22%; --top: 15%; }
+.node-pascal { --left: 78%; --top: 15%; }
+.node-pythagoras { --left: 12%; --top: 35%; }
+.node-mendeleev { --left: 88%; --top: 35%; }
+.node-descartes { --left: 12%; --top: 66%; }
+.node-hooke { --left: 88%; --top: 66%; --delay: 1.8s; }
+.node-lomonosov { --left: 24%; --top: 85%; }
+.node-kurchatov { --left: 42%; --top: 91%; }
+.node-rutherford { --left: 62%; --top: 91%; --delay: 1.95s; }
+.node-tsiolkovsky { --left: 80%; --top: 84%; }
+.node-archimedes { --left: 88%; --top: 51%; }
+.black-hole-node { --left: 50%; --top: 73%; }
+
+/* Orbits are deliberately non-concentric and interrupted, like several intersecting paths. */
+.orbit--outer {
+  width: 112%;
+  height: 88%;
+  left: 50%;
+  top: 51%;
+  border-style: dashed;
+  border-color: rgba(197,188,173,.24);
+  --rotation: -17deg;
+}
+.orbit--middle {
+  width: 78%;
+  height: 57%;
+  left: 49%;
+  top: 47%;
+  border-style: dashed;
+  border-color: rgba(155,197,186,.22);
+  --rotation: 34deg;
+}
+.orbit--inner {
+  width: 45%;
+  height: 38%;
+  left: 48%;
+  top: 49%;
+  border-style: dotted;
+  border-color: rgba(221,193,138,.26);
+  --rotation: -42deg;
+}
+.orbit--tilted {
+  width: 91%;
+  height: 45%;
+  left: 54%;
+  top: 53%;
+  border-style: dashed;
+  border-color: rgba(142,174,203,.23);
+  --rotation: 62deg;
+}
+.orbit--cluster-west {
+  width: 40%;
+  height: 27%;
+  left: 25%;
+  top: 29%;
+  border-style: dashed;
+  border-color: rgba(170,162,203,.34);
+  --rotation: 22deg;
+}
+.orbit--cluster-east {
+  width: 43%;
+  height: 30%;
+  left: 76%;
+  top: 34%;
+  border-style: dotted;
+  border-color: rgba(214,155,118,.36);
+  --rotation: -28deg;
+}
+.orbit--cluster-south {
+  width: 62%;
+  height: 27%;
+  left: 51%;
+  top: 79%;
+  border-style: dashed;
+  border-color: rgba(155,197,186,.24);
+  --rotation: 11deg;
+}
+.orbit--crossing {
+  width: 60%;
+  height: 48%;
+  left: 35%;
+  top: 60%;
+  border-style: dotted;
+  border-color: rgba(214,155,118,.20);
+  --rotation: -53deg;
+}
+.system-world .node-hooke .node-caption { border-color: rgba(170,162,203,.42); }
+.system-world .node-rutherford .node-caption { border-color: rgba(217,143,125,.42); }
+
+@media (max-width: 700px) {
+  .system-shell .system-world .node-hooke,
+  .system-shell .system-world .node-rutherford { left: 50%; top: 50%; }
+  .system-shell.is-open .system-world .node-hooke { left: var(--left); top: var(--top); }
+  .system-shell.is-open .system-world .node-rutherford { left: var(--left); top: var(--top); }
+}
