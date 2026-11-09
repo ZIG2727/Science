@@ -1012,3 +1012,10 @@ body {
   .system-shell.is-open .system-world .node-hooke { left: var(--left); top: var(--top); }
   .system-shell.is-open .system-world .node-rutherford { left: var(--left); top: var(--top); }
 }
+
+/* Desktop positioning for the newest orbital nodes. */
+.is-open .node-hooke,
+.is-open .node-rutherford {
+  left: var(--left);
+  top: var(--top);
+}
