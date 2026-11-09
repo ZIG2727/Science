@@ -387,3 +387,121 @@ body {
   .footer-top-row { flex-wrap: wrap; }
   .developer-list { grid-template-columns: 1fr; gap: 10px; }
 }
+
+
+/* Mobile map layout: keep every scientist in a separate, readable slot. */
+.is-open .node-pythagoras,
+.is-open .node-archimedes {
+  left: var(--left);
+  top: var(--top);
+}
+
+@media (max-width: 700px) {
+  .system-shell {
+    height: 1120px;
+    overflow: hidden;
+  }
+
+  .system-shell .orbit {
+    opacity: .35;
+    max-width: 94%;
+  }
+
+  .system-node {
+    width: 44%;
+    gap: 8px;
+  }
+
+  .node-caption {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    padding: 7px 6px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .node-caption strong {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    font-size: 9px;
+    line-height: 1.3;
+  }
+
+  .node-caption small {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    font-size: 6px;
+    line-height: 1.35;
+    letter-spacing: .02em;
+  }
+
+  .node-planet {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 auto;
+  }
+
+  .is-open .node-galileo { left: 50%; top: 9%; width: 72%; }
+  .is-open .node-popov { left: 25%; top: 23%; }
+  .is-open .node-lomonosov { left: 75%; top: 23%; }
+  .is-open .node-mendeleev { left: 25%; top: 39%; }
+  .is-open .node-tsiolkovsky { left: 75%; top: 39%; }
+  .is-open .node-kurchatov { left: 25%; top: 55%; }
+  .is-open .node-pythagoras { left: 75%; top: 55%; }
+  .is-open .node-archimedes { left: 25%; top: 72%; }
+
+  .is-open .black-hole-node {
+    left: 75%;
+    top: 72%;
+    width: 44%;
+    height: auto;
+    min-height: 0;
+    gap: 7px;
+  }
+
+  .black-hole-rings { width: 62px; height: 62px; }
+  .black-hole-label { white-space: normal; font-size: 7px; line-height: 1.4; }
+  .black-hole-label small { font-size: 5px; white-space: normal; }
+  .einstein-preview { display: none; }
+
+  .system-center-label,
+  .system-scale,
+  .system-callout { display: none; }
+
+  .article-sheet { width: calc(100% - 28px); }
+  .article-topline { gap: 8px; }
+  .article-index { display: none; }
+  .article-hero { grid-template-columns: 1fr; gap: 20px; padding: 24px 0 28px; }
+  .article-image-wrap { width: 100%; height: 230px; }
+  .article-title-wrap { min-width: 0; }
+  .article-title-wrap h2 {
+    font-size: clamp(34px, 10vw, 48px);
+    line-height: 1.08;
+    overflow-wrap: anywhere;
+  }
+  .article-title-wrap p,
+  .article-paragraphs p,
+  .achievement-item p,
+  .timeline-text,
+  .source-list a {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+  .article-content-grid { grid-template-columns: 1fr; gap: 24px; }
+  .achievement-list { grid-template-columns: 1fr; }
+  .article-aside { display: flex; }
+  .article-bottom { gap: 12px; flex-wrap: wrap; }
+  .article-bottom > span { line-height: 1.6; }
+}
+
+@media (max-width: 390px) {
+  .system-shell { height: 1080px; }
+  .node-caption strong { font-size: 8px; }
+  .node-caption small { font-size: 5.5px; }
+  .article-sheet { width: calc(100% - 22px); }
+  .article-close span { font-size: 6px; }
+}
