@@ -343,6 +343,165 @@ function makeStars() {
 }
 makeStars();
 
+// Movable camera for the planetary system (mouse, touch and pinch zoom).
+const systemWorld = document.getElementById("systemWorld");
+const activePointers = new Map();
+const camera = { x: 0, y: 0, scale: 1 };
+let cameraGesture = null;
+let suppressNodeClickUntil = 0;
+let cameraWasMobile = null;
+
+function cameraIsMobile() {
+  return window.matchMedia("(max-width: 700px)").matches;
+}
+function cameraLimits() {
+  return cameraIsMobile() ? { min: 0.42, max: 1.35 } : { min: 0.55, max: 2.0 };
+}
+function clampCamera() {
+  const width = systemWorld.offsetWidth * camera.scale;
+  const height = systemWorld.offsetHeight * camera.scale;
+  const viewWidth = systemShell.clientWidth;
+  const viewHeight = systemShell.clientHeight;
+  if (width <= viewWidth) camera.x = (viewWidth - width) / 2;
+  else camera.x = Math.max(viewWidth - width, Math.min(0, camera.x));
+  if (height <= viewHeight) camera.y = (viewHeight - height) / 2;
+  else camera.y = Math.max(viewHeight - height, Math.min(0, camera.y));
+}
+function applyCamera() {
+  clampCamera();
+  systemWorld.style.transform = `translate3d(${camera.x}px, ${camera.y}px, 0) scale(${camera.scale})`;
+}
+function fitSystemCamera(reset = false) {
+  if (!systemWorld) return;
+  const mobile = cameraIsMobile();
+  if (reset || cameraWasMobile !== mobile) {
+    camera.scale = mobile
+      ? Math.min(0.72, (systemShell.clientHeight / systemWorld.offsetHeight) * 0.94)
+      : 1;
+    camera.x = (systemShell.clientWidth - systemWorld.offsetWidth * camera.scale) / 2;
+    camera.y = (systemShell.clientHeight - systemWorld.offsetHeight * camera.scale) / 2;
+    cameraWasMobile = mobile;
+  }
+  applyCamera();
+}
+function pointerDistance(a, b) {
+  return Math.hypot(a.x - b.x, a.y - b.y);
+}
+function pointerCenter(a, b) {
+  return { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+}
+function beginCameraGesture() {
+  const points = [...activePointers.values()];
+  if (points.length >= 2) {
+    const a = points[0], b = points[1];
+    const center = pointerCenter(a, b);
+    cameraGesture = {
+      mode: "pinch",
+      distance: Math.max(1, pointerDistance(a, b)),
+      scale: camera.scale,
+      worldX: (center.x - camera.x) / camera.scale,
+      worldY: (center.y - camera.y) / camera.scale,
+      moved: true
+    };
+  } else if (points.length === 1) {
+    const p = points[0];
+    cameraGesture = {
+      mode: "pan",
+      startX: p.x,
+      startY: p.y,
+      cameraX: camera.x,
+      cameraY: camera.y,
+      moved: false
+    };
+  }
+}
+function captureActivePointers() {
+  for (const id of activePointers.keys()) {
+    try { if (!systemShell.hasPointerCapture(id)) systemShell.setPointerCapture(id); } catch (_) {}
+  }
+}
+systemShell.addEventListener("pointerdown", event => {
+  if (event.pointerType === "mouse" && event.button !== 0) return;
+  activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+  if (activePointers.size === 1) {
+    beginCameraGesture();
+  } else if (activePointers.size === 2) {
+    beginCameraGesture();
+    captureActivePointers();
+    systemShell.classList.add("is-dragging");
+  }
+});
+systemShell.addEventListener("pointermove", event => {
+  if (!activePointers.has(event.pointerId) || !cameraGesture) return;
+  activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+  const points = [...activePointers.values()];
+  if (cameraGesture.mode === "pinch" && points.length >= 2) {
+    const center = pointerCenter(points[0], points[1]);
+    const nextScale = Math.max(cameraLimits().min, Math.min(cameraLimits().max,
+      cameraGesture.scale * pointerDistance(points[0], points[1]) / cameraGesture.distance));
+    camera.scale = nextScale;
+    camera.x = center.x - cameraGesture.worldX * nextScale - systemShell.getBoundingClientRect().left;
+    camera.y = center.y - cameraGesture.worldY * nextScale - systemShell.getBoundingClientRect().top;
+    suppressNodeClickUntil = Date.now() + 350;
+    systemShell.classList.add("is-dragging");
+    captureActivePointers();
+    applyCamera();
+    return;
+  }
+  if (cameraGesture.mode === "pan" && points.length === 1) {
+    const p = points[0];
+    const dx = p.x - cameraGesture.startX;
+    const dy = p.y - cameraGesture.startY;
+    if (!cameraGesture.moved && Math.hypot(dx, dy) < 5) return;
+    cameraGesture.moved = true;
+    suppressNodeClickUntil = Date.now() + 350;
+    captureActivePointers();
+    systemShell.classList.add("is-dragging");
+    camera.x = cameraGesture.cameraX + dx;
+    camera.y = cameraGesture.cameraY + dy;
+    applyCamera();
+  }
+});
+function finishCameraPointer(event) {
+  if (!activePointers.has(event.pointerId)) return;
+  activePointers.delete(event.pointerId);
+  try { if (systemShell.hasPointerCapture(event.pointerId)) systemShell.releasePointerCapture(event.pointerId); } catch (_) {}
+  if (activePointers.size) {
+    beginCameraGesture();
+  } else {
+    if (cameraGesture?.moved) suppressNodeClickUntil = Date.now() + 350;
+    cameraGesture = null;
+    systemShell.classList.remove("is-dragging");
+  }
+}
+systemShell.addEventListener("pointerup", finishCameraPointer);
+systemShell.addEventListener("pointercancel", finishCameraPointer);
+systemShell.addEventListener("lostpointercapture", finishCameraPointer);
+systemShell.addEventListener("click", event => {
+  if (Date.now() < suppressNodeClickUntil && event.target.closest(".system-node")) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  }
+}, true);
+systemShell.addEventListener("wheel", event => {
+  event.preventDefault();
+  const rect = systemShell.getBoundingClientRect();
+  const px = event.clientX - rect.left;
+  const py = event.clientY - rect.top;
+  const worldX = (px - camera.x) / camera.scale;
+  const worldY = (py - camera.y) / camera.scale;
+  const limits = cameraLimits();
+  const nextScale = Math.max(limits.min, Math.min(limits.max,
+    camera.scale * (event.deltaY < 0 ? 1.08 : 1 / 1.08)));
+  camera.scale = nextScale;
+  camera.x = px - worldX * nextScale;
+  camera.y = py - worldY * nextScale;
+  applyCamera();
+}, { passive: false });
+window.addEventListener("resize", () => fitSystemCamera(false));
+requestAnimationFrame(() => fitSystemCamera(true));
+
+
 function openUniverse() {
   const section = document.getElementById("universe");
   section.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
