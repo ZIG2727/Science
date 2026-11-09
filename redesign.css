@@ -722,3 +722,167 @@ body {
   .is-open .node-pythagoras { left: var(--left); top: var(--top); }
   .is-open .node-archimedes { left: var(--left); top: var(--top); }
 }
+
+
+/* v0.7.5 — planetary camera system */
+.system-shell {
+  position: relative;
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.system-shell.is-dragging { cursor: grabbing; }
+.system-world {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+.system-world .system-node { user-select: none; -webkit-user-select: none; }
+.system-world .system-node img { -webkit-user-drag: none; }
+.camera-hint {
+  position: absolute;
+  z-index: 10;
+  top: 15px;
+  left: 18px;
+  max-width: calc(100% - 36px);
+  color: rgba(219, 205, 187, .72);
+  font: 500 8px var(--mono);
+  letter-spacing: .07em;
+  line-height: 1.5;
+  pointer-events: none;
+  text-shadow: 0 2px 8px rgba(0,0,0,.55);
+}
+.node-popov { --left: 50%; --top: 10%; --delay: .25s; }
+.node-pythagoras { --left: 18%; --top: 25%; --delay: 1.08s; }
+.node-mendeleev { --left: 82%; --top: 25%; --delay: .62s; }
+.node-lomonosov { --left: 12%; --top: 56%; --delay: .45s; }
+.node-archimedes { --left: 88%; --top: 56%; --delay: 1.2s; }
+.node-tsiolkovsky { --left: 77%; --top: 80%; --delay: .8s; }
+.node-kurchatov { --left: 25%; --top: 82%; --delay: .98s; }
+.black-hole-node { --left: 52%; --top: 89%; --delay: 1.35s; }
+
+@media (max-width: 700px) {
+  .system-shell {
+    display: block !important;
+    width: 100%;
+    height: min(72vh, 660px) !important;
+    min-height: 520px !important;
+    padding: 0 !important;
+    overflow: hidden;
+    border-radius: 3px;
+  }
+  .system-shell .system-world {
+    inset: 0 auto auto 0;
+    width: 900px;
+    height: 900px;
+  }
+  .system-shell.is-open .system-world .system-node,
+  .system-shell .system-world .system-node {
+    box-sizing: border-box;
+    position: absolute;
+    inset: auto;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    display: flex;
+    width: max-content;
+    max-width: 190px;
+    min-width: 0;
+    height: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.14);
+    transition: left 1.5s cubic-bezier(.16,1,.3,1), top 1.5s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1), opacity .6s ease;
+    transition-delay: var(--delay, 0s);
+  }
+  .system-shell.is-open .system-world .system-node {
+    left: var(--left, 50%);
+    top: var(--top, 50%);
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .system-shell.is-open .system-world .node-galileo {
+    left: 50%;
+    top: 50%;
+    max-width: 220px;
+    z-index: 7;
+  }
+  .system-shell .system-world .node-caption {
+    box-sizing: border-box;
+    width: auto;
+    min-width: 142px;
+    max-width: 190px;
+    padding: 7px 9px;
+    white-space: nowrap;
+    text-align: center;
+  }
+  .system-shell .system-world .node-caption strong {
+    white-space: nowrap;
+    font-size: 9px;
+    line-height: 1.35;
+  }
+  .system-shell .system-world .node-caption small {
+    white-space: nowrap;
+    font-size: 6px;
+    letter-spacing: .03em;
+  }
+  .system-shell .system-world .node-planet {
+    width: 54px;
+    height: 54px;
+    flex: 0 0 54px;
+    font-size: 16px;
+  }
+  .system-shell .system-world .galileo-sun {
+    width: 82px;
+    height: 82px;
+    flex: 0 0 82px;
+  }
+  .system-shell .system-world .node-halo { width: 130px; height: 130px; }
+  .system-shell .system-world .black-hole-node {
+    width: 150px;
+    height: auto;
+    min-height: 0;
+    transform: translate(-50%, -50%) scale(.14);
+  }
+  .system-shell.is-open .system-world .black-hole-node {
+    left: var(--left);
+    top: var(--top);
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .system-shell .system-world .black-hole-rings { width: 72px; height: 72px; }
+  .system-shell .system-world .black-hole-label { white-space: nowrap; font-size: 7px; }
+  .system-shell .system-world .black-hole-label small { font-size: 5.5px; }
+  .system-shell .system-world .einstein-preview { display: none; }
+
+  .system-shell .system-world .system-center-label { display: block; bottom: 16px; left: 20px; }
+  .system-shell .system-world .system-scale { display: flex; bottom: 16px; right: 20px; }
+  .system-shell .system-world .system-callout { display: flex; top: 44px; right: 24px; }
+  .camera-hint {
+    top: 12px;
+    left: 12px;
+    max-width: 70%;
+    font-size: 7px;
+  }
+}
+@media (max-width: 390px) {
+  .system-shell { height: min(70vh, 620px) !important; min-height: 500px !important; }
+  .system-shell .system-world .node-caption { min-width: 132px; padding: 6px 7px; }
+  .system-shell .system-world .node-caption strong { font-size: 8px; }
+  .system-shell .system-world .node-caption small { font-size: 5.5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .system-shell.is-open .system-world .system-node,
+  .system-world { transition-duration: .01ms !important; }
+}
