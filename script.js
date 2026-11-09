@@ -322,9 +322,9 @@ scientists.archimedes = {
 
 
 
-portraits.newton = "https://commons.wikimedia.org/wiki/Special:FilePath/Portrait_of_Sir_Isaac_Newton,_1689FXD.jpg?width=900";
-portraits.pascal = "https://commons.wikimedia.org/wiki/Special:FilePath/Pascal_Blaise.jpeg?width=900";
-portraits.descartes = "https://commons.wikimedia.org/wiki/Special:FilePath/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg?width=900";
+portraits.newton = "https://upload.wikimedia.org/wikipedia/commons/1/13/Portrait_of_Sir_Isaac_Newton%2C_1689FXD.jpg";
+portraits.pascal = "https://upload.wikimedia.org/wikipedia/commons/4/4d/Pascal_Blaise.jpeg";
+portraits.descartes = "https://upload.wikimedia.org/wikipedia/commons/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg";
 
 scientists.newton = {
   index: "FILE / 10",
