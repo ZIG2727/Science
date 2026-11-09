@@ -505,3 +505,220 @@ body {
   .article-sheet { width: calc(100% - 22px); }
   .article-close span { font-size: 6px; }
 }
+
+
+/* Version label in footer */
+.footer-version {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 24px;
+  padding: 14px 0 13px;
+  border-top: 1px solid rgba(222,208,188,.14);
+}
+.footer-version span {
+  color: #a99d90;
+  font: 500 8px var(--mono);
+  letter-spacing: .1em;
+}
+.footer-version strong {
+  color: #e1c09e;
+  font: 500 15px var(--mono);
+  letter-spacing: .04em;
+}
+
+/* Definitive mobile layout: use normal grid flow instead of overlapping absolute nodes. */
+@media (max-width: 700px) {
+  .system-shell {
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: minmax(116px, auto);
+    align-content: start;
+    align-items: center;
+    justify-items: center;
+    gap: 14px 8px;
+    height: auto !important;
+    min-height: 760px;
+    padding: 78px 12px 46px;
+    overflow: hidden;
+  }
+
+  .system-shell.is-open .system-node,
+  .system-shell .system-node {
+    box-sizing: border-box;
+    position: relative;
+    inset: auto;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 4px 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    opacity: 0;
+    transform: none;
+    transition: opacity .45s ease;
+    transition-delay: 0s;
+    z-index: 5;
+  }
+
+  .system-shell.is-open .system-node {
+    opacity: 1;
+    transform: none;
+  }
+
+  .system-shell.is-open .node-galileo,
+  .system-shell .node-galileo {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    width: 72%;
+    max-width: 250px;
+    justify-self: center;
+    z-index: 7;
+  }
+
+  .system-shell.is-open .node-popov { grid-column: 1; grid-row: 2; }
+  .system-shell.is-open .node-lomonosov { grid-column: 2; grid-row: 2; }
+  .system-shell.is-open .node-mendeleev { grid-column: 1; grid-row: 3; }
+  .system-shell.is-open .node-tsiolkovsky { grid-column: 2; grid-row: 3; }
+  .system-shell.is-open .node-kurchatov { grid-column: 1; grid-row: 4; }
+  .system-shell.is-open .node-pythagoras { grid-column: 2; grid-row: 4; }
+  .system-shell.is-open .node-archimedes { grid-column: 1; grid-row: 5; }
+
+  .system-shell.is-open .black-hole-node {
+    grid-column: 2;
+    grid-row: 5;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    gap: 6px;
+    transform: none;
+  }
+
+  .system-shell .node-planet {
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+    font-size: 15px;
+  }
+
+  .system-shell .galileo-sun {
+    width: 68px;
+    height: 68px;
+    flex: 0 0 68px;
+  }
+
+  .system-shell .node-halo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .system-shell .node-caption {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    padding: 7px 5px;
+    gap: 4px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .system-shell .node-caption strong {
+    display: block;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    font-size: 8.5px;
+    line-height: 1.3;
+  }
+
+  .system-shell .node-caption small {
+    display: block;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    font-size: 5.5px;
+    line-height: 1.35;
+    letter-spacing: .02em;
+  }
+
+  .system-shell .black-hole-rings {
+    width: 60px;
+    height: 60px;
+  }
+  .system-shell .black-hole-label {
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.35;
+    font-size: 7px;
+  }
+  .system-shell .black-hole-label small {
+    white-space: normal;
+    font-size: 5.5px;
+  }
+  .system-shell .einstein-preview { display: none; }
+
+  .system-shell .system-center-label,
+  .system-shell .system-scale,
+  .system-shell .system-callout { display: none; }
+
+  /* Let cards grow with their copy; no absolute text layers on small screens. */
+  .about-card,
+  .about-card--large {
+    box-sizing: border-box;
+    min-height: 220px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+  }
+  .about-card--large { min-height: 280px; }
+  .about-card-number { position: relative; z-index: 2; }
+  .about-card h3 {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin: auto 0 0;
+    padding-top: 52px;
+    font-size: 22px;
+    line-height: 1.08;
+  }
+  .about-card p {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    max-width: 100%;
+    margin: 10px 0 0;
+    font-size: 10px;
+    line-height: 1.6;
+  }
+
+  .footer-version {
+    margin-top: 20px;
+  }
+  .developer-list p strong {
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+  }
+}
+
+@media (min-width: 701px) {
+  .is-open .node-pythagoras { left: var(--left); top: var(--top); }
+  .is-open .node-archimedes { left: var(--left); top: var(--top); }
+}
