@@ -324,3 +324,66 @@ body {
   .topbar { height: 76px; }
   .hero { padding-top: 130px; }
 }
+
+/* Expanded 9-person astronomy and science map. */
+.node-pythagoras { --left: 23%; --top: 25%; --delay: 1.08s; }
+.node-archimedes { --left: 60%; --top: 82%; --delay: 1.2s; }
+.footer {
+  display: block;
+  padding-top: 22px;
+  padding-bottom: 30px;
+}
+.footer-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  min-height: 54px;
+}
+.footer-developers {
+  margin-top: 19px;
+  padding-top: 19px;
+  border-top: 1px solid rgba(222,208,188,.14);
+}
+.footer-developers h2 {
+  margin: 0 0 13px;
+  color: #b7a18d;
+  font: 500 8px var(--mono);
+  letter-spacing: .1em;
+}
+.developer-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 13px 25px;
+}
+.developer-list p {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #e1d8cc;
+  font: 400 10px/1.6 var(--body);
+}
+.developer-list p span {
+  color: #a99d90;
+  font: 500 8px var(--mono);
+  letter-spacing: .05em;
+}
+.developer-list p strong {
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 700px) {
+  .system-shell { height: 770px; }
+  .node-pythagoras { --left: 79%; --top: 17%; }
+  .node-archimedes { --left: 51%; --top: 85%; }
+  .node-kurchatov { --left: 22%; --top: 78%; }
+  .node-tsiolkovsky { --left: 82%; --top: 73%; }
+  .node-lomonosov { --left: 18%; --top: 43%; }
+  .node-mendeleev { --left: 82%; --top: 43%; }
+  .node-popov { --left: 28%; --top: 15%; }
+  .black-hole-node { --left: 83%; --top: 58%; }
+  .footer { padding: 20px 22px 27px; }
+  .footer-top-row { flex-wrap: wrap; }
+  .developer-list { grid-template-columns: 1fr; gap: 10px; }
+}
