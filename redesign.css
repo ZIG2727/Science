@@ -1019,3 +1019,64 @@ body {
   left: var(--left);
   top: var(--top);
 }
+
+
+/* v0.7.8 — small static scientific illustrations inside each planet */
+.node-planet .planet-art {
+  display: block;
+  width: 29px;
+  height: 29px;
+  color: rgba(247, 244, 232, .96);
+  line-height: 0;
+  pointer-events: none;
+  transition: none !important;
+  animation: none !important;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.38));
+}
+.node-planet .planet-art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.galileo-sun .sun-core {
+  display: grid;
+  place-items: center;
+  font-size: 0;
+  text-shadow: none;
+}
+.galileo-sun .planet-art--sun {
+  display: block;
+  width: 43px;
+  height: 43px;
+  color: rgba(255, 244, 221, .96);
+  line-height: 0;
+  pointer-events: none;
+  transition: none !important;
+  animation: none !important;
+}
+.galileo-sun .planet-art--sun svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+@media (max-width: 700px) {
+  .system-shell .system-world .node-planet .planet-art {
+    width: 26px;
+    height: 26px;
+  }
+  .system-shell .system-world .galileo-sun .planet-art--sun {
+    width: 39px;
+    height: 39px;
+  }
+}
