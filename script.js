@@ -399,8 +399,8 @@ function beginCameraGesture() {
       mode: "pinch",
       distance: Math.max(1, pointerDistance(a, b)),
       scale: camera.scale,
-      worldX: (center.x - camera.x) / camera.scale,
-      worldY: (center.y - camera.y) / camera.scale,
+      worldX: (center.x - systemShell.getBoundingClientRect().left - camera.x) / camera.scale,
+      worldY: (center.y - systemShell.getBoundingClientRect().top - camera.y) / camera.scale,
       moved: true
     };
   } else if (points.length === 1) {
