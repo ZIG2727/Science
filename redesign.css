@@ -886,3 +886,30 @@ body {
   .system-shell.is-open .system-world .system-node,
   .system-world { transition-duration: .01ms !important; }
 }
+
+
+/* v0.7.6 — three additional planets on independent orbital positions */
+.node-newton { --left: 25%; --top: 10%; --delay: 1.4s; }
+.node-pascal { --left: 88%; --top: 40%; --delay: 1.55s; }
+.node-descartes { --left: 12%; --top: 40%; --delay: 1.7s; }
+.is-open .node-newton,
+.is-open .node-pascal,
+.is-open .node-descartes {
+  left: var(--left);
+  top: var(--top);
+}
+.system-world .node-newton .node-caption { border-color: rgba(142,174,203,.38); }
+.system-world .node-pascal .node-caption { border-color: rgba(155,197,186,.4); }
+.system-world .node-descartes .node-caption { border-color: rgba(217,143,125,.4); }
+
+@media (max-width: 700px) {
+  .system-shell .system-world .node-newton,
+  .system-shell .system-world .node-pascal,
+  .system-shell .system-world .node-descartes {
+    left: 50%;
+    top: 50%;
+  }
+  .system-shell.is-open .system-world .node-newton { left: var(--left); top: var(--top); }
+  .system-shell.is-open .system-world .node-pascal { left: var(--left); top: var(--top); }
+  .system-shell.is-open .system-world .node-descartes { left: var(--left); top: var(--top); }
+}
