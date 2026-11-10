@@ -5,7 +5,13 @@ const portraits = {
   lomonosov: "https://www.thefamouspeople.com/profiles/images/mikhail-lomonosov-3.jpg",
   mendeleev: "https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/02/08/13/DmitriMendeleev.jpg?auto=webp&quality=75&width=1200",
   tsiolkovsky: "https://kosmosnews.fr/wp-content/uploads/2022/09/Tsiolkovsky-Konstantin-Hor_03-standard-width-2000px-768x605.jpg",
-  kurchatov: "https://avatars.mds.yandex.net/get-entity_search/5504037/931019008/S600xU_2x"
+  kurchatov: "https://avatars.mds.yandex.net/get-entity_search/5504037/931019008/S600xU_2x",
+
+  vernadsky: "https://commons.wikimedia.org/wiki/Special:FilePath/Vernadsky%20V.I.jpg",
+  markovnikov: "https://commons.wikimedia.org/wiki/Special:FilePath/VladimirMarkovnikov.jpg",
+  timiryazev: "https://commons.wikimedia.org/wiki/Special:FilePath/Kliment%20Timiryazev%201911.jpg",
+  sechenov: "https://commons.wikimedia.org/wiki/Special:FilePath/Sechenov.jpg",
+  pavlov: "https://commons.wikimedia.org/wiki/Special:FilePath/Ivan%20Pavlov%20LIFE.jpg"
 };
 
 const scientists = {
@@ -702,6 +708,183 @@ scientists.thales = {
   imageSource: "Поздняя художественная иллюстрация, издание 1574 года; подлинный портрет Фалеса неизвестен"
 };
 
+
+scientists.vernadsky = {
+  index: "FILE / 20",
+  name: "Владимир Вернадский",
+  dates: "1863 — 1945 · ГЕОХИМИЯ И БИОГЕОХИМИЯ",
+  lead: "Естествоиспытатель, минералог и мыслитель, один из основателей геохимии и биогеохимии. Развил учение о биосфере и исследовал, как живое вещество влияет на процессы планеты.",
+  heading: "Жизнь как геологическая сила",
+  tags: ["Биосфера", "Биогеохимия", "Ноосфера"],
+  quote: "Вернадский рассматривал живые организмы как важную силу, меняющую химическую историю Земли.",
+  paragraphs: [
+    "Владимир Иванович Вернадский родился в Санкт-Петербурге в 1863 году. Он окончил физико-математический факультет Петербургского университета и занимался минералогией, кристаллографией и геологией. Со временем его интересы вышли далеко за пределы одной дисциплины.",
+    "Вернадский исследовал распространение и перемещение химических элементов в земной коре. Он связывал геологические процессы с деятельностью организмов и помог сформировать биогеохимию — область, изучающую химические процессы, связанные с живым веществом.",
+    "В книге «Биосфера» (1926) учёный подробно изложил представление о биосфере как оболочке Земли, где жизнь влияет на ход природных процессов. Сам термин «биосфера» ввёл ранее Эдуард Зюсс, но именно Вернадский придал этому понятию новое научное содержание.",
+    "В поздних работах Вернадский размышлял о ноосфере — этапе развития биосферы, в котором научная мысль и деятельность человечества становятся заметной планетарной силой. Его идеи повлияли на геохимию, экологию и междисциплинарные исследования."
+  ],
+  achievements: [
+    ["ГЕОХИМИЯ", "Один из основателей науки о распространении и миграции химических элементов в земной коре."],
+    ["БИОГЕОХИМИЯ", "Показал тесную связь между жизнью и химическими процессами планеты."],
+    ["1926 · «БИОСФЕРА»", "Систематизировал учение о биосфере и роли живого вещества."],
+    ["НООСФЕРА", "Развивал представление о влиянии научной мысли и деятельности людей на биосферу."]
+  ],
+  timeline: [
+    ["1863", "Родился в Санкт-Петербурге."],
+    ["1885", "Окончил Петербургский университет."],
+    ["1912", "Стал действительным членом Академии наук."],
+    ["1926", "Вышла книга «Биосфера»."],
+    ["1945", "Умер в Москве."]
+  ],
+  sources: [
+    ["European Geosciences Union — Vladimir Vernadsky", "https://www.egu.eu/egs/vladimir.htm"],
+    ["Encyclopedia of Ukraine — Vernadsky", "https://www.encyclopediaofukraine.com/display.asp?linkpath=pagesV%5CE%5CVernadskyVolodymyr"],
+    ["Journal of Geochemical Exploration — From mineral to noosphere", "https://www.sciencedirect.com/science/article/pii/S0375674214000843"],
+    ["Wikimedia Commons — портрет 1910 года", "https://commons.wikimedia.org/wiki/File:Vernadsky_V.I.jpg"]
+  ],
+  imageSource: "Портрет: Wikimedia Commons, около 1910 года"
+};
+
+scientists.markovnikov = {
+  index: "FILE / 21",
+  name: "Владимир Марковников",
+  dates: "1837 — 1904 · ОРГАНИЧЕСКАЯ ХИМИЯ",
+  lead: "Русский химик, сформулировавший правило, которое помогает предсказывать направление присоединения реагентов к несимметричным алкенам. Его исследования стали важной частью развития органической химии.",
+  heading: "Правило, объясняющее химические реакции",
+  tags: ["Правило Марковникова", "Органическая химия", "Строение молекул"],
+  quote: "Правило Марковникова связывает строение исходных молекул с направлением химического превращения.",
+  paragraphs: [
+    "Владимир Васильевич Марковников родился в 1837 году. Он учился в Казанском университете и был учеником химика Александра Бутлерова, развивавшего теорию химического строения органических веществ.",
+    "В 1869 году Марковников сформулировал правило, описывающее направление присоединения некоторых реагентов к несимметричным алкенам. В современной учебной формулировке при присоединении галогеноводорода водород обычно оказывается у того атома углерода двойной связи, у которого уже больше атомов водорода.",
+    "Это правило не является универсальным для всех реакций: существуют условия и механизмы, при которых наблюдается другая ориентация. Но оно стало удобным и важным инструментом для понимания реакционной способности органических соединений.",
+    "Марковников занимался не только теоретическими вопросами. Он исследовал свойства органических кислот и нефти, преподавал в Казанском, Новороссийском и Московском университетах, способствовал развитию химических лабораторий."
+  ],
+  achievements: [
+    ["1869 · ПРАВИЛО МАРКОВНИКОВА", "Сформулировал закономерность ориентации присоединения к несимметричным алкенам."],
+    ["ОРГАНИЧЕСКИЕ КИСЛОТЫ", "Исследовал строение и свойства органических кислот и их производных."],
+    ["ХИМИЯ НЕФТИ", "Проводил исследования состава и свойств нефти и нафтеновых соединений."],
+    ["НАУЧНАЯ ШКОЛА", "Преподавал в нескольких университетах и развивал отечественную органическую химию."]
+  ],
+  timeline: [
+    ["1837", "Родился в Княгинине Нижегородской губернии."],
+    ["1860-е", "Занимался исследованиями под руководством Александра Бутлерова."],
+    ["1869", "Сформулировал правило присоединения в органической химии."],
+    ["1870-е", "Продолжил преподавательскую и исследовательскую работу в университетах."],
+    ["1904", "Умер в Москве."]
+  ],
+  sources: [
+    ["PubMed — Towards the 150th Anniversary of the Markovnikov Rule", "https://pubmed.ncbi.nlm.nih.gov/30537023/"],
+    ["Wiley — The Logic Behind Markovnikov's Rule", "https://onlinelibrary.wiley.com/doi/full/10.1002/anie.202008228"],
+    ["Wikimedia Commons — портрет химика", "https://commons.wikimedia.org/wiki/File:VladimirMarkovnikov.jpg"]
+  ],
+  imageSource: "Портрет: Wikimedia Commons, публикация 1905 года"
+};
+
+scientists.timiryazev = {
+  index: "FILE / 22",
+  name: "Климент Тимирязев",
+  dates: "1843 — 1920 · ФИЗИОЛОГИЯ РАСТЕНИЙ",
+  lead: "Русский естествоиспытатель, исследовавший фотосинтез и роль света в жизни растений. Его работы помогли объяснить, как зелёные растения используют энергию солнечного света.",
+  heading: "Как растения используют свет",
+  tags: ["Фотосинтез", "Хлорофилл", "Физиология растений"],
+  quote: "Тимирязев изучал, как энергия солнечного света превращается в химическую энергию органических веществ.",
+  paragraphs: [
+    "Климент Аркадьевич Тимирязев родился в Санкт-Петербурге в 1843 году. Он получил образование в Петербургском университете, а затем продолжил научную подготовку в Европе. Позднее преподавал и проводил исследования в Москве.",
+    "Главным направлением его исследований стала физиология растений, особенно фотосинтез. Тимирязев изучал, как хлорофилл поглощает свет разных участков спектра и как освещение влияет на образование органических веществ в растении.",
+    "Учёный использовал экспериментальные методы, в том числе измерения поглощения света и выделения кислорода. Его исследования поддержали представление о том, что фотосинтез зависит от энергии света, а не является простым поглощением веществ из почвы.",
+    "Тимирязев популяризировал эволюционную теорию и научный подход к изучению природы. Он написал лекции и книги, которые помогли сделать физиологию растений доступнее широкой аудитории."
+  ],
+  achievements: [
+    ["ФОТОСИНТЕЗ", "Исследовал зависимость фотосинтеза от интенсивности и спектрального состава света."],
+    ["ХЛОРОФИЛЛ", "Изучал поглощение световой энергии зелёным пигментом растений."],
+    ["ЭКСПЕРИМЕНТАЛЬНАЯ ФИЗИОЛОГИЯ", "Развивал точные методы исследования газообмена и жизнедеятельности растений."],
+    ["НАУЧНОЕ ПРОСВЕЩЕНИЕ", "Популяризировал биологию и эволюционное учение."]
+  ],
+  timeline: [
+    ["1843", "Родился в Санкт-Петербурге."],
+    ["1866", "Окончил Петербургский университет."],
+    ["1870-е", "Начал преподавать и исследовать физиологию растений в Москве."],
+    ["1875", "Защитил докторскую диссертацию."],
+    ["1920", "Умер в Москве."]
+  ],
+  sources: [
+    ["Российская академия наук — Климент Тимирязев", "http://www.ras.ru/win/db/show_per.asp?P=.id-52349.ln-ru"],
+    ["Wikimedia Commons — портрет 1911 года", "https://commons.wikimedia.org/wiki/File:Kliment_Timiryazev_1911.jpg"],
+    ["Wikimedia Commons — портрет Тимирязева", "https://commons.wikimedia.org/wiki/File:Kliment_Timiryazev.jpg"]
+  ],
+  imageSource: "Историческая фотография: Wikimedia Commons, 1911 год"
+};
+
+scientists.sechenov = {
+  index: "FILE / 23",
+  name: "Иван Сеченов",
+  dates: "1829 — 1905 · ФИЗИОЛОГИЯ И НЕЙРОНАУКА",
+  lead: "Физиолог, исследовавший работу центральной нервной системы. Его книга «Рефлексы головного мозга» помогла сформировать научный подход к изучению рефлекторной природы психической деятельности.",
+  heading: "Мозг и рефлексы",
+  tags: ["Рефлексы", "Центральная нервная система", "Физиология"],
+  quote: "Сеченов показал, что деятельность мозга можно исследовать научными методами физиологии.",
+  paragraphs: [
+    "Иван Михайлович Сеченов родился в 1829 году в селе Тёплый Стан. Сначала он получил инженерное образование, затем изучал медицину и физиологию, работал в научных центрах Европы и России.",
+    "В 1863 году вышла его работа «Рефлексы головного мозга». Сеченов развивал идею о том, что сложная деятельность нервной системы связана с рефлекторными процессами, а не должна рассматриваться отдельно от физиологии организма.",
+    "В экспериментах он исследовал процессы торможения в центральной нервной системе. Открытие центрального торможения стало важным вкладом в понимание того, как нервные центры регулируют и координируют реакции организма.",
+    "Сеченов преподавал в университетах, занимался переводами научной литературы и подготовкой исследователей. Его идеи оказали влияние на развитие отечественной физиологии и последующие исследования Ивана Павлова."
+  ],
+  achievements: [
+    ["1863 · «РЕФЛЕКСЫ ГОЛОВНОГО МОЗГА»", "Представил физиологическое объяснение сложных процессов нервной деятельности."],
+    ["ЦЕНТРАЛЬНОЕ ТОРМОЖЕНИЕ", "Исследовал процессы, при которых нервные центры могут ослаблять или прекращать рефлекторные реакции."],
+    ["ФИЗИОЛОГИЯ НЕРВНОЙ СИСТЕМЫ", "Способствовал развитию экспериментального изучения мозга и поведения."],
+    ["НАУЧНОЕ НАСЛЕДИЕ", "Его идеи повлияли на развитие физиологии и нейронаук."]
+  ],
+  timeline: [
+    ["1829", "Родился в селе Тёплый Стан."],
+    ["1856", "Окончил медицинский факультет Московского университета."],
+    ["1863", "Опубликовал «Рефлексы головного мозга»."],
+    ["1870-е", "Продолжал исследования и преподавание в России."],
+    ["1905", "Умер в Москве."]
+  ],
+  sources: [
+    ["PubMed — I.M. Sechenov: the patriarch of Russian physiology", "https://pubmed.ncbi.nlm.nih.gov/17365549/"],
+    ["Wikimedia Commons — фотография Сеченова", "https://commons.wikimedia.org/wiki/File:Sechenov.jpg"],
+    ["Российская национальная библиотека — портрет 1886 года", "https://commons.wikimedia.org/wiki/File:1886%D0%9F%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82_%D0%98.%D0%9C.%D0%A1%D0%B5%D1%87%D0%B5%D0%BD%D0%BE%D0%B2%D0%B0.JPG"]
+  ],
+  imageSource: "Историческая фотография начала XX века: Wikimedia Commons"
+};
+
+scientists.pavlov = {
+  index: "FILE / 24",
+  name: "Иван Павлов",
+  dates: "1849 — 1936 · ФИЗИОЛОГИЯ",
+  lead: "Физиолог, изучавший пищеварение и деятельность нервной системы. Его исследования условных рефлексов стали одним из оснований экспериментальной физиологии и принесли ему Нобелевскую премию.",
+  heading: "Как организм учится связывать события",
+  tags: ["Условные рефлексы", "Пищеварение", "Нобелевская премия"],
+  quote: "Работы Павлова показали, как опыт и сигналы окружающей среды могут менять реакции организма.",
+  paragraphs: [
+    "Иван Петрович Павлов родился в Рязани в 1849 году. Он учился в духовной семинарии, а затем поступил в Петербургский университет и Медико-хирургическую академию, выбрав естественные науки и медицину.",
+    "Павлов много лет исследовал работу пищеварительных желёз. Он разработал методы, позволявшие точно наблюдать их деятельность, и показал важную роль нервной системы в регуляции пищеварения.",
+    "В 1904 году Павлов получил Нобелевскую премию по физиологии и медицине за исследования физиологии пищеварения. Позднее его лаборатория систематически изучала условные рефлексы — реакции, которые формируются при повторяющейся связи нейтрального сигнала с биологически значимым событием.",
+    "Эксперименты Павлова оказали влияние на физиологию, психологию и медицину. Современная наука рассматривает его открытия в историческом контексте и учитывает этические стандарты исследований на животных."
+  ],
+  achievements: [
+    ["1904 · НОБЕЛЕВСКАЯ ПРЕМИЯ", "Получил премию за исследования физиологии пищеварения."],
+    ["ПИЩЕВАРИТЕЛЬНЫЕ ЖЕЛЕЗЫ", "Разработал экспериментальные методы изучения секреции и регуляции пищеварения."],
+    ["УСЛОВНЫЕ РЕФЛЕКСЫ", "Исследовал формирование приобретённых рефлекторных реакций."],
+    ["ФИЗИОЛОГИЧЕСКАЯ ШКОЛА", "Создал крупную исследовательскую школу и повлиял на развитие физиологии."]
+  ],
+  timeline: [
+    ["1849", "Родился в Рязани."],
+    ["1875", "Окончил Петербургский университет."],
+    ["1890", "Возглавил кафедру фармакологии Военно-медицинской академии."],
+    ["1904", "Получил Нобелевскую премию за исследования пищеварения."],
+    ["1936", "Умер в Ленинграде."]
+  ],
+  sources: [
+    ["Nobel Prize — Ivan Pavlov, biographical", "https://www.nobelprize.org/prizes/medicine/1904/pavlov/biographical/"],
+    ["Nobel Prize — Ivan Pavlov, facts", "https://www.nobelprize.org/prizes/medicine/1904/pavlov/facts/"],
+    ["Wikimedia Commons — портрет Павлова", "https://commons.wikimedia.org/wiki/File:Ivan_Pavlov_LIFE.jpg"]
+  ],
+  imageSource: "Историческая фотография: Wikimedia Commons, 1920 год"
+};
+
 const systemShell = document.getElementById("systemShell");
 const articleModal = document.getElementById("articleModal");
 const relativityOverlay = document.getElementById("relativityOverlay");
@@ -725,7 +908,7 @@ function makeStars() {
 }
 makeStars();
 
-// Movable camera for the planetary system (mouse, touch and pinch zoom).
+// Smooth camera controls: incremental pointer deltas, immediate capture and pinch zoom.
 const systemWorld = document.getElementById("systemWorld");
 const activePointers = new Map();
 const camera = { x: 0, y: 0, scale: 1 };
@@ -777,81 +960,92 @@ function beginCameraGesture() {
   if (points.length >= 2) {
     const a = points[0], b = points[1];
     const center = pointerCenter(a, b);
+    const rect = systemShell.getBoundingClientRect();
     cameraGesture = {
       mode: "pinch",
       distance: Math.max(1, pointerDistance(a, b)),
       scale: camera.scale,
-      worldX: (center.x - systemShell.getBoundingClientRect().left - camera.x) / camera.scale,
-      worldY: (center.y - systemShell.getBoundingClientRect().top - camera.y) / camera.scale,
+      worldX: (center.x - rect.left - camera.x) / camera.scale,
+      worldY: (center.y - rect.top - camera.y) / camera.scale,
       moved: true
     };
+    systemShell.classList.add("is-dragging");
   } else if (points.length === 1) {
     const p = points[0];
     cameraGesture = {
       mode: "pan",
+      lastX: p.x,
+      lastY: p.y,
       startX: p.x,
       startY: p.y,
-      cameraX: camera.x,
-      cameraY: camera.y,
       moved: false
     };
   }
 }
-function captureActivePointers() {
-  for (const id of activePointers.keys()) {
-    try { if (!systemShell.hasPointerCapture(id)) systemShell.setPointerCapture(id); } catch (_) {}
-  }
+function capturePointer(pointerId) {
+  try {
+    if (!systemShell.hasPointerCapture(pointerId)) systemShell.setPointerCapture(pointerId);
+  } catch (_) {}
 }
 systemShell.addEventListener("pointerdown", event => {
   if (event.pointerType === "mouse" && event.button !== 0) return;
+  if (activePointers.has(event.pointerId)) return;
   activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
-  if (activePointers.size === 1) {
-    beginCameraGesture();
-  } else if (activePointers.size === 2) {
-    beginCameraGesture();
-    captureActivePointers();
-    systemShell.classList.add("is-dragging");
-  }
-});
+  // Capture at pointerdown, before the finger can slide off a node or the map surface.
+  capturePointer(event.pointerId);
+  beginCameraGesture();
+}, { passive: true });
+
 systemShell.addEventListener("pointermove", event => {
-  if (!activePointers.has(event.pointerId) || !cameraGesture) return;
-  activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+  const previous = activePointers.get(event.pointerId);
+  if (!previous || !cameraGesture) return;
+  const current = { x: event.clientX, y: event.clientY };
+  activePointers.set(event.pointerId, current);
   const points = [...activePointers.values()];
+
   if (cameraGesture.mode === "pinch" && points.length >= 2) {
     const center = pointerCenter(points[0], points[1]);
+    const rect = systemShell.getBoundingClientRect();
     const nextScale = Math.max(cameraLimits().min, Math.min(cameraLimits().max,
       cameraGesture.scale * pointerDistance(points[0], points[1]) / cameraGesture.distance));
     camera.scale = nextScale;
-    camera.x = center.x - cameraGesture.worldX * nextScale - systemShell.getBoundingClientRect().left;
-    camera.y = center.y - cameraGesture.worldY * nextScale - systemShell.getBoundingClientRect().top;
-    suppressNodeClickUntil = Date.now() + 350;
+    camera.x = center.x - rect.left - cameraGesture.worldX * nextScale;
+    camera.y = center.y - rect.top - cameraGesture.worldY * nextScale;
+    cameraGesture.moved = true;
+    suppressNodeClickUntil = Date.now() + 450;
     systemShell.classList.add("is-dragging");
-    captureActivePointers();
     applyCamera();
     return;
   }
+
   if (cameraGesture.mode === "pan" && points.length === 1) {
-    const p = points[0];
-    const dx = p.x - cameraGesture.startX;
-    const dy = p.y - cameraGesture.startY;
-    if (!cameraGesture.moved && Math.hypot(dx, dy) < 5) return;
-    cameraGesture.moved = true;
-    suppressNodeClickUntil = Date.now() + 350;
-    captureActivePointers();
-    systemShell.classList.add("is-dragging");
-    camera.x = cameraGesture.cameraX + dx;
-    camera.y = cameraGesture.cameraY + dy;
+    const dx = current.x - cameraGesture.lastX;
+    const dy = current.y - cameraGesture.lastY;
+    cameraGesture.lastX = current.x;
+    cameraGesture.lastY = current.y;
+    if (!dx && !dy) return;
+
+    camera.x += dx;
+    camera.y += dy;
+    if (Math.hypot(current.x - cameraGesture.startX, current.y - cameraGesture.startY) > 5) {
+      cameraGesture.moved = true;
+      suppressNodeClickUntil = Date.now() + 450;
+      systemShell.classList.add("is-dragging");
+    }
     applyCamera();
   }
-});
+}, { passive: true });
+
 function finishCameraPointer(event) {
   if (!activePointers.has(event.pointerId)) return;
   activePointers.delete(event.pointerId);
-  try { if (systemShell.hasPointerCapture(event.pointerId)) systemShell.releasePointerCapture(event.pointerId); } catch (_) {}
+  try {
+    if (systemShell.hasPointerCapture(event.pointerId)) systemShell.releasePointerCapture(event.pointerId);
+  } catch (_) {}
   if (activePointers.size) {
     beginCameraGesture();
   } else {
-    if (cameraGesture?.moved) suppressNodeClickUntil = Date.now() + 350;
+    if (cameraGesture?.moved) suppressNodeClickUntil = Date.now() + 450;
     cameraGesture = null;
     systemShell.classList.remove("is-dragging");
   }
@@ -882,7 +1076,6 @@ systemShell.addEventListener("wheel", event => {
 }, { passive: false });
 window.addEventListener("resize", () => fitSystemCamera(false));
 requestAnimationFrame(() => fitSystemCamera(true));
-
 
 function openUniverse() {
   const section = document.getElementById("universe");
