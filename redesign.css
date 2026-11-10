@@ -1080,3 +1080,41 @@ body {
     height: 39px;
   }
 }
+
+
+/* v0.7.9 — four new profiles */
+.node-lebedev { --left: 36%; --top: 29%; --delay: 1.5s; }
+.node-kovalevskaya { --left: 64%; --top: 29%; --delay: 1.62s; }
+.node-euclid { --left: 36%; --top: 57%; --delay: 1.74s; }
+.node-lobachevsky { --left: 64%; --top: 57%; --delay: 1.86s; }
+
+.system-world .node-lebedev .node-caption { border-color: rgba(216,175,119,.45); }
+.system-world .node-kovalevskaya .node-caption { border-color: rgba(170,162,203,.45); }
+.system-world .node-euclid .node-caption { border-color: rgba(142,174,203,.45); }
+.system-world .node-lobachevsky .node-caption { border-color: rgba(155,197,186,.45); }
+
+@media (min-width: 701px) {
+  .is-open .node-lebedev,
+  .is-open .node-kovalevskaya,
+  .is-open .node-euclid,
+  .is-open .node-lobachevsky {
+    left: var(--left);
+    top: var(--top);
+  }
+}
+@media (max-width: 700px) {
+  .system-shell .system-world .node-lebedev,
+  .system-shell .system-world .node-kovalevskaya,
+  .system-shell .system-world .node-euclid,
+  .system-shell .system-world .node-lobachevsky {
+    left: 50%;
+    top: 50%;
+  }
+  .system-shell.is-open .system-world .node-lebedev,
+  .system-shell.is-open .system-world .node-kovalevskaya,
+  .system-shell.is-open .system-world .node-euclid,
+  .system-shell.is-open .system-world .node-lobachevsky {
+    left: var(--left);
+    top: var(--top);
+  }
+}
