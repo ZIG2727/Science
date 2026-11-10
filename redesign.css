@@ -2024,7 +2024,7 @@ a { text-decoration: none; }
     radial-gradient(1px 1px at 38% 81%, rgba(245,239,255,.65) 50%, transparent 100%);
 }
 .hero-copy { position: relative; z-index: 4; max-width: 610px; }
-.hero-eyebrow { color: #ac9dc5; }
+.hero-eyebrow { display: none;  color: #ac9dc5; }
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -2676,23 +2676,7 @@ body::before {
   background-size: 46px 46px;
   mask-image: linear-gradient(to bottom, transparent 1%, #000 30%, transparent 100%);
 }
-.hero::after {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  left: 50%;
-  bottom: -545px;
-  width: min(1120px, 120vw);
-  aspect-ratio: 1;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: .42;
-  background:
-    radial-gradient(circle at center, rgba(228,223,239,.88) .72px, transparent 1.35px) 0 0 / 6px 6px,
-    radial-gradient(ellipse at 50% 42%, rgba(197,177,237,.16), transparent 62%);
-  mask-image: radial-gradient(ellipse at 50% 46%, #000 42%, rgba(0,0,0,.82) 54%, transparent 68%);
-}
+.hero::after { content: none; }
 .hero-stars { opacity: .36; z-index: 1; }
 .hero-copy {
   position: relative;
@@ -2811,7 +2795,7 @@ body::before {
   transform-origin: center;
 }
 .hero-orbit, .hero-core, .hero-planet, .hero-coordinate { display: none !important; }
-.hero-bottom-note {
+.hero-bottom-note { display: none;
   position: absolute;
   z-index: 6;
   left: 50%;
