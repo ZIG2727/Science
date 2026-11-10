@@ -1186,3 +1186,70 @@ body {
 .system-shell.is-dragging {
   cursor: grabbing;
 }
+
+
+/* v0.8.2 — hexagonal scientist layout with clear spacing around Galileo */
+.system-world .node-popov { --left: 50%; --top: 30%; }
+.system-world .node-newton { --left: 68.2%; --top: 40%; }
+.system-world .node-pascal { --left: 68.2%; --top: 60%; }
+.system-world .node-tsiolkovsky { --left: 50%; --top: 70%; }
+.system-world .node-lomonosov { --left: 31.8%; --top: 60%; }
+.system-world .node-mendeleev { --left: 31.8%; --top: 40%; }
+.system-world .node-sechenov { --left: 93%; --top: 50%; }
+.system-world .node-pavlov { --left: 90.9%; --top: 62.7%; }
+.system-world .node-rutherford { --left: 84.8%; --top: 74.1%; }
+.system-world .node-hooke { --left: 75.3%; --top: 83.2%; }
+.system-world .node-kurchatov { --left: 63.3%; --top: 89%; }
+.system-world .node-markovnikov { --left: 50%; --top: 91%; }
+.system-world .node-thales { --left: 33.9%; --top: 88%; }
+.system-world .node-euclid { --left: 20.1%; --top: 79.5%; }
+.system-world .node-lebedev { --left: 10.7%; --top: 66.7%; }
+.system-world .node-timiryazev { --left: 7%; --top: 50%; }
+.system-world .node-descartes { --left: 10.1%; --top: 34.6%; }
+.system-world .node-pythagoras { --left: 19.1%; --top: 21.5%; }
+.system-world .node-archimedes { --left: 32.5%; --top: 12.5%; }
+.system-world .node-vernadsky { --left: 50%; --top: 9%; }
+.system-world .node-kovalevskaya { --left: 66.1%; --top: 12%; }
+.system-world .node-lobachevsky { --left: 79.9%; --top: 20.5%; }
+.system-world .black-hole-node { --left: 89.3%; --top: 33.3%; }
+
+/* Apply the same coordinates on desktop and mobile after earlier layout rules. */
+.is-open .system-world .system-node:not(.node-galileo) {
+  left: var(--left);
+  top: var(--top);
+}
+.system-world .node-caption {
+  box-sizing: border-box;
+  width: 108px;
+  min-width: 108px;
+  max-width: 108px;
+  padding: 6px 6px;
+  white-space: normal;
+  text-align: center;
+}
+.system-world .node-caption strong {
+  white-space: normal;
+  font-size: 8.2px;
+  line-height: 1.28;
+  overflow-wrap: anywhere;
+}
+.system-world .node-caption small {
+  white-space: normal;
+  font-size: 5.2px;
+  line-height: 1.3;
+  letter-spacing: .025em;
+}
+@media (max-width: 700px) {
+  .system-shell.is-open .system-world .system-node:not(.node-galileo) {
+    left: var(--left);
+    top: var(--top);
+  }
+  .system-shell .system-world .node-caption {
+    width: 108px;
+    min-width: 108px;
+    max-width: 108px;
+    padding: 5px 5px;
+  }
+  .system-shell .system-world .node-caption strong { font-size: 7.8px; }
+  .system-shell .system-world .node-caption small { font-size: 4.9px; }
+}
