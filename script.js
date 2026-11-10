@@ -895,7 +895,10 @@ let relativityBusy = false;
 function makeStars() {
   const host = document.getElementById("systemStars");
   if (!host) return;
-  for (let i = 0; i < 82; i++) {
+  // Fewer static points on phones retain the star-field look with less paint work.
+  const isSmallScreen = window.matchMedia("(max-width: 700px)").matches;
+  const starCount = isSmallScreen ? 38 : 82;
+  for (let i = 0; i < starCount; i++) {
     const star = document.createElement("span");
     star.className = "star-speck";
     star.style.left = `${(i * 37.17) % 100}%`;
@@ -1214,6 +1217,11 @@ async function startRelativity() {
   relativityBusy = false;
 }
 document.getElementById("einsteinNode").addEventListener("click", startRelativity);
+
+
+document.addEventListener("visibilitychange", () => {
+  document.documentElement.classList.toggle("page-hidden", document.hidden);
+});
 
 // Keyboard handling and scroll effects.
 document.addEventListener("keydown", event => {
