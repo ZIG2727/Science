@@ -1130,3 +1130,59 @@ body {
   .system-shell .system-world .node-thales { left: 50%; top: 50%; }
   .system-shell.is-open .system-world .node-thales { left: var(--left); top: var(--top); }
 }
+
+
+/* v0.8.1 — five additional scientist nodes */
+.node-vernadsky { --left: 14%; --top: 13%; --delay: 2.02s; }
+.node-markovnikov { --left: 86%; --top: 13%; --delay: 2.08s; }
+.node-timiryazev { --left: 14%; --top: 88%; --delay: 2.14s; }
+.node-sechenov { --left: 86%; --top: 88%; --delay: 2.20s; }
+.node-pavlov { --left: 50%; --top: 96%; --delay: 2.26s; }
+
+.system-world .node-vernadsky .node-caption { border-color: rgba(155,197,186,.48); }
+.system-world .node-markovnikov .node-caption { border-color: rgba(217,143,125,.48); }
+.system-world .node-timiryazev .node-caption { border-color: rgba(155,197,186,.48); }
+.system-world .node-sechenov .node-caption { border-color: rgba(170,162,203,.48); }
+.system-world .node-pavlov .node-caption { border-color: rgba(216,175,119,.48); }
+
+@media (min-width: 701px) {
+  .is-open .node-vernadsky,
+  .is-open .node-markovnikov,
+  .is-open .node-timiryazev,
+  .is-open .node-sechenov,
+  .is-open .node-pavlov {
+    left: var(--left);
+    top: var(--top);
+  }
+}
+@media (max-width: 700px) {
+  .system-shell .system-world .node-vernadsky,
+  .system-shell .system-world .node-markovnikov,
+  .system-shell .system-world .node-timiryazev,
+  .system-shell .system-world .node-sechenov,
+  .system-shell .system-world .node-pavlov {
+    left: 50%;
+    top: 50%;
+  }
+  .system-shell.is-open .system-world .node-vernadsky,
+  .system-shell.is-open .system-world .node-markovnikov,
+  .system-shell.is-open .system-world .node-timiryazev,
+  .system-shell.is-open .system-world .node-sechenov,
+  .system-shell.is-open .system-world .node-pavlov {
+    left: var(--left);
+    top: var(--top);
+  }
+}
+
+/* Smooth, direct manipulation on touch screens. */
+.system-shell,
+.system-world {
+  touch-action: none;
+}
+.system-world {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.system-shell.is-dragging {
+  cursor: grabbing;
+}
