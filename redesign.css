@@ -1997,7 +1997,7 @@ a { text-decoration: none; }
   z-index: 0;
   pointer-events: none;
   opacity: .24;
-  background-image: url("");
+  background-image: none;
   background-size: cover;
   background-position: center;
   filter: saturate(.78) hue-rotate(10deg);
@@ -2081,7 +2081,7 @@ a { text-decoration: none; }
   border-radius: 50%;
   background:
     linear-gradient(145deg, rgba(9,7,18,.05), rgba(9,7,18,.26)),
-    url("") center/cover;
+    none;
   opacity: .83;
   filter: saturate(.82) contrast(1.04);
   box-shadow: 0 0 65px rgba(151, 112, 225, .14);
@@ -2197,7 +2197,7 @@ a { text-decoration: none; }
   inset: 9% 12%;
   z-index: 0;
   pointer-events: none;
-  background: url("") center/cover;
+  background: none;
   opacity: .075;
   filter: saturate(.5);
   mask-image: radial-gradient(ellipse, #000 8%, transparent 74%);
@@ -2338,8 +2338,7 @@ a { text-decoration: none; }
 .about-card--large {
   background:
     linear-gradient(180deg, rgba(10,8,18,.08), rgba(10,8,18,.84)),
-    url("") center/cover,
-    #151022;
+    #0b0a10;
 }
 .about-card--accent {
   background:
@@ -3134,4 +3133,12 @@ body::before {
 }
 @media (prefers-reduced-motion: reduce) {
   .hero, .hero::before, .hero::after, .hero-visual::before { animation: none !important; }
+}
+
+
+/* Keep the centered dotted hemisphere centered after reveal transitions. */
+.hero-visual.reveal,
+.hero-visual.reveal.is-visible {
+  opacity: .92;
+  transform: translateX(-50%);
 }
