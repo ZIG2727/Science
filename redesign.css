@@ -3522,3 +3522,42 @@ body::before {
 @media (prefers-reduced-motion: reduce) {
   .map-status-dot { animation: none; }
 }
+
+
+/* Responsive reference fidelity: keep four visual modules on tablet,
+   then collapse to two columns only on narrow phones. */
+@media (min-width: 561px) and (max-width: 920px) {
+  .about-cards { grid-template-columns: repeat(4, minmax(0,1fr)); }
+  .about-card,
+  .about-card--large,
+  .about-card--accent,
+  .about-card--source {
+    min-height: 238px;
+    padding: 16px 12px;
+  }
+  .about-card h3 { font-size: clamp(15px, 2.2vw, 19px); }
+  .about-card p { font-size: 8px; line-height: 1.6; }
+  .card-constellation, .card-wave, .card-atom, .card-source-mark {
+    width: 40px;
+    height: 40px;
+    margin: 27px 0 14px;
+  }
+}
+@media (max-width: 800px) {
+  .topbar .brand {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    justify-self: auto;
+    transform: translate(-50%, -50%);
+  }
+  .topbar .main-nav {
+    grid-column: 2;
+    justify-self: end;
+    margin-left: auto;
+  }
+}
+@media (max-width: 560px) {
+  .topbar .brand { left: 50%; }
+  .topbar .main-nav { max-width: 62px; }
+}
