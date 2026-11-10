@@ -1253,3 +1253,144 @@ body {
   .system-shell .system-world .node-caption strong { font-size: 7.8px; }
   .system-shell .system-world .node-caption small { font-size: 4.9px; }
 }
+
+
+/* v0.8.3 — luminous animated orbital paths */
+.system-world .orbit {
+  z-index: 1;
+  border: 1px solid var(--orbit-line, rgba(113, 206, 204, .22)) !important;
+  border-style: solid !important;
+  box-shadow:
+    0 0 9px var(--orbit-halo, rgba(91, 211, 204, .09)),
+    inset 0 0 9px rgba(104, 210, 207, .035);
+  overflow: visible;
+  transition: opacity 1.1s ease, transform 1.7s cubic-bezier(.2,.8,.2,1),
+    box-shadow .7s ease, border-color .7s ease;
+}
+.system-world .orbit::before,
+.system-world .orbit::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  display: block;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg 270deg,
+    var(--orbit-soft, rgba(100, 220, 210, .08)) 292deg,
+    var(--orbit-bright, rgba(143, 255, 235, .92)) 314deg,
+    transparent 337deg 360deg
+  );
+  -webkit-mask: radial-gradient(ellipse at center, transparent 0 calc(100% - 3px), #000 calc(100% - 1.5px));
+  mask: radial-gradient(ellipse at center, transparent 0 calc(100% - 3px), #000 calc(100% - 1.5px));
+  filter: drop-shadow(0 0 5px var(--orbit-bright, rgba(143, 255, 235, .92)));
+}
+.system-world .orbit::before {
+  animation: orbitSweep var(--orbit-speed, 28s) linear infinite;
+}
+.system-world .orbit::after {
+  inset: -3px;
+  background: conic-gradient(
+    from 180deg,
+    transparent 0deg 302deg,
+    rgba(255, 255, 255, .02) 316deg,
+    var(--orbit-bright, rgba(143, 255, 235, .92)) 326deg,
+    transparent 340deg 360deg
+  );
+  animation: orbitSweep var(--orbit-speed-back, 19s) linear infinite reverse;
+  filter: blur(.35px) drop-shadow(0 0 7px var(--orbit-bright, rgba(143, 255, 235, .92)));
+}
+.system-shell.is-open .system-world .orbit::before,
+.system-shell.is-open .system-world .orbit::after {
+  opacity: 1;
+  transition: opacity .9s ease;
+}
+.system-shell.is-open .system-world .orbit::after {
+  opacity: .72;
+}
+.system-world .orbit--outer {
+  --orbit-line: rgba(93, 214, 207, .28);
+  --orbit-soft: rgba(95, 220, 211, .14);
+  --orbit-bright: rgba(132, 255, 229, .96);
+  --orbit-halo: rgba(78, 221, 208, .15);
+  --orbit-speed: 42s;
+  --orbit-speed-back: 29s;
+  border-width: 1.2px !important;
+}
+.system-world .orbit--middle {
+  --orbit-line: rgba(133, 181, 220, .26);
+  --orbit-soft: rgba(119, 177, 229, .15);
+  --orbit-bright: rgba(179, 221, 255, .96);
+  --orbit-halo: rgba(108, 171, 222, .13);
+  --orbit-speed: 32s;
+  --orbit-speed-back: 23s;
+}
+.system-world .orbit--inner {
+  --orbit-line: rgba(235, 185, 125, .28);
+  --orbit-soft: rgba(226, 173, 112, .14);
+  --orbit-bright: rgba(255, 218, 158, .96);
+  --orbit-halo: rgba(235, 173, 104, .13);
+  --orbit-speed: 22s;
+  --orbit-speed-back: 16s;
+  border-width: 1.25px !important;
+}
+.system-world .orbit--tilted {
+  --orbit-line: rgba(169, 151, 220, .22);
+  --orbit-soft: rgba(169, 151, 220, .13);
+  --orbit-bright: rgba(211, 191, 255, .94);
+  --orbit-halo: rgba(158, 137, 216, .12);
+  --orbit-speed: 36s;
+  --orbit-speed-back: 25s;
+}
+.system-world .orbit--cluster-west,
+.system-world .orbit--cluster-east,
+.system-world .orbit--cluster-south,
+.system-world .orbit--crossing {
+  border-style: dashed !important;
+  border-width: 1px !important;
+  opacity: .72;
+}
+.system-world .orbit--cluster-west {
+  --orbit-line: rgba(180, 159, 225, .26);
+  --orbit-soft: rgba(180, 159, 225, .13);
+  --orbit-bright: rgba(216, 199, 255, .92);
+  --orbit-halo: rgba(166, 143, 216, .1);
+  --orbit-speed: 25s;
+  --orbit-speed-back: 18s;
+}
+.system-world .orbit--cluster-east {
+  --orbit-line: rgba(226, 158, 126, .25);
+  --orbit-soft: rgba(226, 158, 126, .12);
+  --orbit-bright: rgba(255, 195, 156, .94);
+  --orbit-halo: rgba(226, 150, 118, .1);
+  --orbit-speed: 29s;
+  --orbit-speed-back: 21s;
+}
+.system-world .orbit--cluster-south {
+  --orbit-line: rgba(128, 211, 179, .23);
+  --orbit-soft: rgba(128, 211, 179, .12);
+  --orbit-bright: rgba(177, 255, 210, .92);
+  --orbit-halo: rgba(111, 206, 165, .1);
+  --orbit-speed: 34s;
+  --orbit-speed-back: 24s;
+}
+.system-world .orbit--crossing {
+  --orbit-line: rgba(224, 170, 132, .2);
+  --orbit-soft: rgba(224, 170, 132, .1);
+  --orbit-bright: rgba(255, 207, 165, .9);
+  --orbit-halo: rgba(214, 155, 118, .09);
+  --orbit-speed: 31s;
+  --orbit-speed-back: 22s;
+}
+@keyframes orbitSweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .system-world .orbit::before,
+  .system-world .orbit::after {
+    animation: none !important;
+  }
+}
