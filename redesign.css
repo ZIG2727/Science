@@ -1669,3 +1669,123 @@ body {
   }
 }
 
+
+
+/* v0.8.5 — visible full-page scientist themes and mobile rendering optimizations */
+
+/* Put each scientist's palette on the actual visible backdrop layer. */
+.article-modal[data-theme]:not([data-theme="einstein"]) {
+  background: var(--theme-deep, #171a20);
+}
+.article-modal[data-theme]:not([data-theme="einstein"]) .article-backdrop {
+  opacity: 1;
+  background:
+    radial-gradient(ellipse at 78% 16%, var(--theme-glow-a), transparent 42%),
+    radial-gradient(ellipse at 12% 72%, var(--theme-glow-b), transparent 40%),
+    var(--theme-motif),
+    linear-gradient(145deg, var(--theme-base), var(--theme-deep));
+  background-size: auto, auto, 100% 100%, auto;
+  background-attachment: fixed;
+}
+.article-sheet[data-theme]:not([data-theme="einstein"]) {
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 78% 13%, var(--theme-glow-a), transparent 44%),
+    radial-gradient(ellipse at 12% 64%, var(--theme-glow-b), transparent 38%),
+    var(--theme-motif),
+    linear-gradient(145deg, var(--theme-base), var(--theme-deep));
+  background-size: auto, auto, 100% 100%, auto;
+  border-left: 1px solid var(--theme-accent-soft);
+  border-right: 1px solid var(--theme-accent-soft);
+}
+.article-sheet[data-theme]:not([data-theme="einstein"]) .article-hero {
+  background: transparent;
+}
+.article-sheet[data-theme]:not([data-theme="einstein"]) .article-content-grid {
+  border-top-color: var(--theme-accent-soft);
+}
+.article-sheet[data-theme]:not([data-theme="einstein"]) .aside-card,
+.article-sheet[data-theme]:not([data-theme="einstein"]) .achievement-item {
+  background-color: rgba(7, 13, 20, .34);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.article-sheet[data-theme]:not([data-theme="einstein"]) .article-image-wrap {
+  background:
+    radial-gradient(ellipse at 50% 36%, var(--theme-glow-a), transparent 65%),
+    linear-gradient(145deg, var(--theme-base), var(--theme-deep));
+}
+.article-sheet[data-theme]:not([data-theme="einstein"]) .article-title-wrap h2 {
+  text-shadow: 0 5px 28px rgba(0,0,0,.34);
+}
+
+/* Avoid expensive moving texture and layered blur on touch devices. */
+@media (max-width: 700px) {
+  .grain {
+    opacity: .025;
+    background-image:
+      radial-gradient(rgba(224, 236, 235, .22) .45px, transparent .7px);
+    background-size: 4px 4px;
+  }
+  .ambient {
+    filter: none;
+    animation: none;
+    opacity: .12;
+  }
+  .ambient--one,
+  .ambient--two {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(20, 111, 125, .58), transparent 70%);
+  }
+  .system-nebula {
+    filter: none;
+    animation: none;
+    opacity: .8;
+  }
+  .star-speck {
+    animation: none;
+    box-shadow: 0 0 4px rgba(94, 235, 220, .42);
+  }
+  .system-world .orbit::after {
+    display: none !important;
+  }
+  .system-world .orbit::before {
+    filter: none !important;
+    animation-duration: calc(var(--orbit-speed, 32s) * 1.4);
+  }
+  .system-world .orbit--cluster-west::before,
+  .system-world .orbit--cluster-east::before,
+  .system-world .orbit--cluster-south::before,
+  .system-world .orbit--crossing::before {
+    display: none;
+  }
+  .system-world .orbit--cluster-west,
+  .system-world .orbit--cluster-east,
+  .system-world .orbit--cluster-south,
+  .system-world .orbit--crossing {
+    box-shadow: none;
+  }
+  .system-world .node-caption {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .system-world .node-planet .planet-art {
+    filter: none;
+  }
+  .system-shell .system-world .system-node {
+    transition-duration: .85s, .85s, .55s, .45s;
+  }
+}
+
+/* Stop decorative motion when the page is not visible. */
+.page-hidden .ambient,
+.page-hidden .system-nebula,
+.page-hidden .star-speck,
+.page-hidden .orbit::before,
+.page-hidden .orbit::after,
+.page-hidden .galileo-sun,
+.page-hidden .sun-flare,
+.page-hidden .node-halo {
+  animation-play-state: paused !important;
+}
