@@ -1294,8 +1294,6 @@ if (!reducedMotion && window.matchMedia("(pointer: fine)").matches) {
     pointerFrame = requestAnimationFrame(() => {
       const x = (event.clientX / window.innerWidth - .5) * 10;
       const y = (event.clientY / window.innerHeight - .5) * 10;
-      const visual = document.querySelector(".hero-visual");
-      if (visual && window.scrollY < window.innerHeight) visual.style.translate = `${x * .35}px ${y * .35}px`;
       const nebula = document.querySelector(".system-nebula");
       if (nebula) nebula.style.translate = `${x * .2}px ${y * .2}px`;
     });
