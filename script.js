@@ -1087,6 +1087,32 @@ systemShell.addEventListener("wheel", event => {
   applyCamera();
 }, { passive: false });
 window.addEventListener("resize", () => fitSystemCamera(false));
+
+// Accessible map zoom controls for the new cosmic interface.
+document.querySelectorAll("[data-map-zoom]").forEach(control => {
+  control.addEventListener("pointerdown", event => event.stopPropagation());
+  control.addEventListener("click", event => {
+    event.preventDefault();
+    event.stopPropagation();
+    const action = control.dataset.mapZoom;
+    if (action === "reset") {
+      fitSystemCamera(true);
+      return;
+    }
+    const rect = systemShell.getBoundingClientRect();
+    const px = rect.width / 2;
+    const py = rect.height / 2;
+    const worldX = (px - camera.x) / camera.scale;
+    const worldY = (py - camera.y) / camera.scale;
+    const factor = action === "in" ? 1.18 : 1 / 1.18;
+    const limits = cameraLimits();
+    camera.scale = Math.max(limits.min, Math.min(limits.max, camera.scale * factor));
+    camera.x = px - worldX * camera.scale;
+    camera.y = py - worldY * camera.scale;
+    applyCamera();
+  });
+});
+
 requestAnimationFrame(() => fitSystemCamera(true));
 
 function openUniverse() {
