@@ -1685,7 +1685,6 @@ body {
     var(--theme-motif),
     linear-gradient(145deg, var(--theme-base), var(--theme-deep));
   background-size: auto, auto, 100% 100%, auto;
-  background-attachment: fixed;
 }
 .article-sheet[data-theme]:not([data-theme="einstein"]) {
   isolation: isolate;
@@ -1788,4 +1787,34 @@ body {
 .page-hidden .sun-flare,
 .page-hidden .node-halo {
   animation-play-state: paused !important;
+}
+
+
+/* v0.8.6 — run decorative motion only while the map is visible and opened */
+.system-world .orbit::before,
+.system-world .orbit::after {
+  animation: none !important;
+}
+.system-shell.is-open.is-in-view .system-world .orbit::before {
+  animation: orbitSweep var(--orbit-speed, 28s) linear infinite;
+}
+.system-shell.is-open.is-in-view .system-world .orbit::after {
+  animation: orbitSweep var(--orbit-speed-back, 19s) linear infinite reverse;
+}
+.system-shell:not(.is-in-view) .star-speck,
+.system-shell:not(.is-open) .star-speck {
+  animation: none !important;
+}
+.system-shell.is-open.is-in-view .star-speck {
+  animation: twinkle var(--duration, 4s) ease-in-out infinite alternate;
+  animation-delay: var(--delay, 0s);
+}
+@media (max-width: 700px) {
+  .system-shell.is-open.is-in-view .system-world .orbit::before {
+    animation-duration: calc(var(--orbit-speed, 32s) * 1.4);
+    filter: none;
+  }
+  .system-shell.is-open.is-in-view .system-world .orbit::after {
+    display: none !important;
+  }
 }
