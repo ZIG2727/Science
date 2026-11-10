@@ -3142,3 +3142,51 @@ body::before {
   opacity: .92;
   transform: translateX(-50%);
 }
+
+
+/* Reference composition: editorial heading first, four cards in one row. */
+.about-grid {
+  display: block;
+  max-width: 1420px;
+  margin: 0 auto;
+}
+.about-copy {
+  max-width: 670px;
+  margin: 0 0 44px;
+}
+.about-copy p { max-width: 570px; }
+.about-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.about-card,
+.about-card--large,
+.about-card--accent,
+.about-card--source {
+  min-height: 270px;
+  padding: 21px;
+}
+.about-card h3 { font-size: clamp(21px, 2vw, 28px); }
+.card-constellation, .card-wave, .card-atom, .card-source-mark {
+  margin-top: 33px;
+  margin-bottom: 18px;
+}
+@media (max-width: 920px) {
+  .about-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .about-copy { margin-bottom: 30px; }
+  .about-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+  .about-card,
+  .about-card--large,
+  .about-card--accent,
+  .about-card--source {
+    min-height: 220px;
+    padding: 14px;
+  }
+  .card-constellation, .card-wave, .card-atom, .card-source-mark {
+    margin-top: 22px;
+    margin-bottom: 14px;
+  }
+}
