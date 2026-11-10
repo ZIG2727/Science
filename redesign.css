@@ -1330,3 +1330,26 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .system-cube * { filter: none !important; }
 }
+
+
+/* v0.9.0 — spacing refinement for the three cube faces */
+.system-world .node-caption {
+  width: 106px;
+  min-width: 100px;
+  max-width: 106px;
+}
+.system-world .node-popov { --left: 41%; --top: 16%; left: var(--left); top: var(--top); }
+.system-world .node-newton { --left: 59%; --top: 16%; left: var(--left); top: var(--top); }
+.system-world .node-pascal { --left: 33%; --top: 25%; left: var(--left); top: var(--top); }
+.system-world .node-pythagoras { --left: 50%; --top: 25%; left: var(--left); top: var(--top); }
+.system-world .node-archimedes { --left: 67%; --top: 25%; left: var(--left); top: var(--top); }
+.system-world .node-descartes { --left: 38%; --top: 36%; left: var(--left); top: var(--top); }
+.system-world .node-hooke { --left: 62%; --top: 36%; left: var(--left); top: var(--top); }
+.system-world .node-thales { --left: 50%; --top: 43%; left: var(--left); top: var(--top); }
+@media (max-width: 700px) {
+  .system-world .node-caption {
+    width: 102px;
+    min-width: 98px;
+    max-width: 102px;
+  }
+}
