@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600;7..72,700&family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=0.8.1">
-  <link rel="stylesheet" href="redesign.css?v=0.8.1">
+  <link rel="stylesheet" href="styles.css?v=0.9.0">
+  <link rel="stylesheet" href="redesign.css?v=0.9.0">
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress"></div>
@@ -75,7 +75,7 @@
           <h2>Вселенная<br><span>открытий</span></h2>
         </div>
         <div class="section-heading-side">
-          <p>В центре системы — Галилео Галилей. Вокруг него — учёные, чьи идеи изменили наше представление о мире.</p>
+          <p>Карта показана как объёмный куб в 2D-проекции. Галилео Галилей находится в центре одной из граней, а остальные учёные распределены по видимым плоскостям.</p>
           <button class="button button--primary button--compact" id="revealScientists" type="button">Учёные <span class="button-arrow">↗</span></button>
         </div>
       </div>
@@ -84,13 +84,49 @@
         <span class="instruction-icon">✳</span>
         <span>Нажмите на учёного или перемещайте карту, чтобы исследовать систему</span>
         <span class="instruction-line"></span>
-        <span class="instruction-code">24 ИСТОРИИ</span>
+        <span class="instruction-code">24 УЧЁНЫХ</span>
       </div>
 
       <div class="system-shell" id="systemShell" aria-label="Интерактивная карта учёных. Перетаскивайте для перемещения, используйте два пальца для масштабирования.">
         <div class="system-world" id="systemWorld">
         <div class="system-nebula"></div>
         <div class="system-stars" id="systemStars" aria-hidden="true"></div>
+        <svg class="system-cube" viewBox="0 0 1000 900" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="cubeTop" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#6ecfc0" stop-opacity=".15"/>
+              <stop offset="1" stop-color="#8db8df" stop-opacity=".06"/>
+            </linearGradient>
+            <linearGradient id="cubeLeft" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#d9ad79" stop-opacity=".13"/>
+              <stop offset="1" stop-color="#9c8ec8" stop-opacity=".07"/>
+            </linearGradient>
+            <linearGradient id="cubeRight" x1="1" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#8db8df" stop-opacity=".13"/>
+              <stop offset="1" stop-color="#6ecfc0" stop-opacity=".06"/>
+            </linearGradient>
+            <filter id="cubeGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="5" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <g class="cube-faces">
+            <polygon class="cube-face cube-face--top" points="500,80 790,245 500,410 210,245" fill="url(#cubeTop)"/>
+            <polygon class="cube-face cube-face--left" points="210,245 500,410 500,800 210,635" fill="url(#cubeLeft)"/>
+            <polygon class="cube-face cube-face--right" points="500,410 790,245 790,635 500,800" fill="url(#cubeRight)"/>
+          </g>
+          <g class="cube-grid">
+            <path d="M500 80 500 410 500 800 M210 245 500 410 790 245 M210 245 210 635 500 800 790 635 790 245" />
+            <path d="M355 162.5 355 717.5 M645 162.5 645 717.5 M210 440 500 605 790 440" />
+          </g>
+          <g class="cube-outline" filter="url(#cubeGlow)">
+            <path d="M500 80 790 245 790 635 500 800 210 635 210 245Z"/>
+            <path d="M210 245 500 410 790 245 M500 410 500 800"/>
+          </g>
+          <g class="cube-labels">
+            <text x="500" y="58">НАУЧНЫЙ КУБ · 2D ПРОЕКЦИЯ</text>
+          </g>
+        </svg>
         <div class="orbit orbit--outer"></div>
         <div class="orbit orbit--middle"></div>
         <div class="orbit orbit--inner"></div>
@@ -103,7 +139,7 @@
         <button class="system-node node-galileo" data-scientist="galileo" type="button" aria-label="Открыть статью о Галилео Галилее">
           <span class="node-halo"></span>
           <span class="galileo-sun"><span class="sun-flare"></span><span class="sun-core"><span class="planet-art planet-art--sun" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="m10 13 20-7 5 8-20 8z"/><path d="m9 12 4 11m19-17 5 8M22 20l2 7m-2-7-9 21m11-14 3 15m-3-15 13 11"/><path d="m18 42 18 0"/></svg></span></span></span>
-          <span class="node-caption"><strong>Галилео Галилей</strong><small>ЦЕНТР СИСТЕМЫ · 1564–1642</small></span>
+          <span class="node-caption"><strong>Галилео Галилей</strong><small>ЦЕНТР ГРАНИ · 1564–1642</small></span>
         </button>
 
         <button class="system-node node-popov" data-scientist="popov" type="button" aria-label="Открыть статью об Александре Попове">
@@ -342,6 +378,6 @@
     </article>
   </section>
 
-  <script src="script.js?v=0.8.1"></script>
+  <script src="script.js?v=0.9.0"></script>
 </body>
 </html>
