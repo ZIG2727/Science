@@ -911,6 +911,15 @@ function makeStars() {
 }
 makeStars();
 
+// Keep animated map decoration idle until the map is opened and visible.
+const systemMotionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    systemShell.classList.toggle("is-in-view", entry.isIntersecting);
+  });
+}, { threshold: 0.04 });
+if (systemShell) systemMotionObserver.observe(systemShell);
+
+
 // Smooth camera controls: incremental pointer deltas, immediate capture and pinch zoom.
 const systemWorld = document.getElementById("systemWorld");
 const activePointers = new Map();
