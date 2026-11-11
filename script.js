@@ -11,7 +11,19 @@ const portraits = {
   markovnikov: "https://commons.wikimedia.org/wiki/Special:FilePath/VladimirMarkovnikov.jpg",
   timiryazev: "https://commons.wikimedia.org/wiki/Special:FilePath/Kliment%20Timiryazev%201911.jpg",
   sechenov: "https://commons.wikimedia.org/wiki/Special:FilePath/Sechenov.jpg",
-  pavlov: "https://commons.wikimedia.org/wiki/Special:FilePath/Ivan%20Pavlov%20LIFE.jpg"
+  pavlov: "https://commons.wikimedia.org/wiki/Special:FilePath/Ivan%20Pavlov%20LIFE.jpg",
+  pythagoras: "https://upload.wikimedia.org/wikipedia/commons/9/93/Pythagoras_Bust_Vatican_Museum_%28cropped%29.jpg",
+  archimedes: "https://upload.wikimedia.org/wikipedia/commons/f/ff/Archimede_%28Ritratto%29.jpg",
+  newton: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Portrait_of_Sir_Isaac_Newton%2C_1689.jpg",
+  pascal: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Blaise_Pascal_Versailles-cropped.jpg",
+  descartes: "https://upload.wikimedia.org/wikipedia/commons/f/f2/Jan_Baptist_Weenix_-_Portrait_of_Ren%C3%A9_Descartes.jpg",
+  hooke: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Memorial_portrait_of_Robert_Hooke_for_the_Institute_of_Physics%2C_London.JPG",
+  rutherford: "https://upload.wikimedia.org/wikipedia/commons/d/de/Ernest_Rutherford_1908.jpg",
+  lebedev: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Lebedev_petr_nikolaevich.jpg",
+  kovalevskaya: "https://upload.wikimedia.org/wikipedia/commons/e/e2/Sofya_Kovalevskaya%2C_1890.jpg",
+  euclid: "https://upload.wikimedia.org/wikipedia/commons/6/6d/Euclid_Wellcome_M0004267.jpg",
+  lobachevsky: "https://upload.wikimedia.org/wikipedia/commons/0/09/Nikolai_Lobachevsky.jpg",
+  thales: "https://upload.wikimedia.org/wikipedia/commons/f/f2/Thales_of_Miletus.jpg"
 };
 
 const scientists = {
@@ -1299,3 +1311,54 @@ if (!reducedMotion && window.matchMedia("(pointer: fine)").matches) {
     });
   }, { passive: true });
 }
+
+
+// 1.2.6 — use authentic portrait images in the orbital scientist map.
+function addMapPortrait(target, source, className, onLoaded) {
+  if (!target || !source || target.querySelector("." + className)) return;
+  const image = document.createElement("img");
+  image.className = className;
+  image.alt = "";
+  image.loading = "lazy";
+  image.decoding = "async";
+  image.addEventListener("load", () => {
+    image.classList.add("is-loaded");
+    if (typeof onLoaded === "function") onLoaded(image);
+  }, { once: true });
+  image.addEventListener("error", () => image.remove(), { once: true });
+  target.appendChild(image);
+  image.src = source;
+}
+
+function applyScientistMapPortraits() {
+  document.querySelectorAll(".system-world .system-node[data-scientist]").forEach(node => {
+    const portraitUrl = portraits[node.dataset.scientist];
+    const planet = node.querySelector(".node-planet");
+    const icon = planet && planet.querySelector(".planet-art");
+    const holder = icon && icon.parentElement;
+    if (!portraitUrl || !planet || !holder) return;
+
+    holder.classList.add("portrait-holder");
+    addMapPortrait(holder, portraitUrl, "node-photo", () => {
+      planet.classList.add("has-portrait");
+    });
+  });
+
+  const galileoCore = document.querySelector(".galileo-sun .sun-core");
+  const galileoIcon = galileoCore && galileoCore.querySelector(".planet-art--sun");
+  if (galileoCore && galileoIcon) {
+    galileoCore.classList.add("portrait-holder");
+    addMapPortrait(galileoCore, portraits.galileo, "galileo-map-photo", () => {
+      galileoCore.classList.add("has-portrait");
+    });
+  }
+
+  const einsteinCore = document.querySelector("#einsteinNode .black-hole-rings b");
+  if (einsteinCore) {
+    addMapPortrait(einsteinCore, portraits.einstein, "einstein-map-photo", () => {
+      einsteinCore.classList.add("has-photo");
+    });
+  }
+}
+
+applyScientistMapPortraits();
