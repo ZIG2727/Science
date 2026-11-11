@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Onest:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=1.2.3">
-  <link rel="stylesheet" href="redesign.css?v=1.2.3">
+  <link rel="stylesheet" href="styles.css?v=1.2.4">
+  <link rel="stylesheet" href="redesign.css?v=1.2.4">
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress"></div>
@@ -121,15 +121,13 @@
         <span class="instruction-code">24 ИСТОРИИ</span>
       </div>
 
-      <div class="system-shell" id="systemShell" aria-label="Интерактивная карта учёных. Перетаскивайте для перемещения, используйте два пальца для масштабирования.">
-        <div class="map-hud map-hud--top" aria-hidden="true"><span><i class="map-status-dot"></i> SYSTEM ONLINE</span><span>CATALOG / 24 OBJECTS</span><span>SECTOR 01 · MILKY WAY</span></div>
-        <div class="map-controls" aria-label="Управление масштабом карты">
+      <div class="system-shell" id="systemShell" aria-label="Интерактивная карта учёных.">
+<div class="map-controls" aria-label="Управление масштабом карты">
           <button type="button" data-map-zoom="in" aria-label="Приблизить карту">+</button>
           <button type="button" data-map-zoom="out" aria-label="Отдалить карту">−</button>
           <button type="button" data-map-zoom="reset" aria-label="Сбросить масштаб">↺</button>
         </div>
-        <div class="map-hud map-hud--bottom" aria-hidden="true"><span>DRAG TO MOVE</span><span>SCROLL / PINCH TO ZOOM</span></div>
-        <div class="system-world" id="systemWorld">
+<div class="system-world" id="systemWorld">
         <div class="system-nebula"></div>
         <div class="system-stars" id="systemStars" aria-hidden="true"></div>
         <div class="orbit orbit--outer"></div>
@@ -250,12 +248,8 @@
           <span class="node-planet node-planet--amber"><span><span class="planet-art" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M8 11h32v26H8z"/><path d="M14 17h20m-20 7h13m-13 7h17"/><path d="M34 8c5 0 7 3 7 7"/></svg></span></span></span>
           <span class="node-caption"><strong>Иван Павлов</strong><small>УСЛОВНЫЕ РЕФЛЕКСЫ · 1849–1936</small></span>
         </button>
-        <div class="system-center-label" aria-hidden="true">СИСТЕМА · ВИД СВЕРХУ <span>·</span> ОРБИТЫ УСЛОВНЫЕ</div>
-        <div class="system-scale" aria-hidden="true"><span></span><small>1 AU</small></div>
-        <div class="system-callout" aria-hidden="true"><span class="callout-mark">+</span><span>ИССЛЕДУЙ<br>НЕИЗВЕДАННОЕ</span></div>
-              </div>
-        <div class="camera-hint" aria-hidden="true">ПЕРЕТАСКИВАЙТЕ КАРТУ · ДВА ПАЛЬЦА — МАСШТАБ</div>
-      </div>
+</div>
+</div>
       <div class="map-foot reveal">
         <div class="map-foot-left"><span class="live-dot"></span> ВЫБЕРИТЕ УЧЁНОГО И НАЧНИТЕ ИССЛЕДОВАНИЕ</div>
         <span>Каждая точка — отдельная история</span>
@@ -285,7 +279,7 @@
     </div>
     <div class="footer-version" aria-label="Версия сайта">
       <span>ВЕРСИЯ САЙТА</span>
-      <strong>1.2.3</strong>
+      <strong>1.2.4</strong>
     </div>
     <div class="footer-developers" aria-label="Разработчики сайта">
       <h2>РАЗРАБОТЧИКИ</h2>
@@ -356,6 +350,6 @@
     </article>
   </section>
 
-  <script src="script.js?v=1.2.3"></script>
+  <script src="script.js?v=1.2.4"></script>
 </body>
 </html>
