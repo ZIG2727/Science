@@ -3678,3 +3678,21 @@ body::before {
 @media (prefers-reduced-motion: reduce) {
   .hero-visual { animation: none !important; }
 }
+
+
+/* 1.2.3 — header without contact links; centered project identity. */
+.topbar {
+  grid-template-columns: 1fr auto;
+}
+.topbar .brand {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  justify-self: auto;
+  transform: translate(-50%, -50%);
+}
+.topbar .main-nav {
+  grid-column: 2;
+  justify-self: end;
+  margin-left: auto;
+}
