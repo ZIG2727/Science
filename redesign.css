@@ -3708,3 +3708,79 @@ body::before {
   visibility: hidden !important;
   pointer-events: none !important;
 }
+
+
+/* 1.2.6 — portrait photography in the orbital map. */
+.node-planet .portrait-holder {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.node-planet .node-photo,
+.galileo-sun .galileo-map-photo,
+.black-hole-rings b .einstein-map-photo {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+.node-planet .node-photo {
+  border-radius: 50%;
+  filter: grayscale(.18) saturate(.82) contrast(1.08);
+}
+.node-planet .node-photo.is-loaded,
+.galileo-sun .galileo-map-photo.is-loaded,
+.black-hole-rings b .einstein-map-photo.is-loaded {
+  opacity: 1;
+}
+.node-planet.has-portrait {
+  overflow: hidden;
+  background: #16121f;
+}
+.node-planet.has-portrait .planet-art {
+  visibility: hidden;
+}
+.node-planet.has-portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(229,218,255,.24);
+  border-radius: 50%;
+  box-shadow: inset 0 -8px 14px rgba(0,0,0,.2);
+  pointer-events: none;
+}
+.galileo-sun .sun-core.portrait-holder {
+  position: relative;
+  width: 43px;
+  height: 43px;
+}
+.galileo-sun .sun-core.has-portrait .planet-art--sun {
+  visibility: hidden;
+}
+.galileo-sun .galileo-map-photo {
+  border-radius: 50%;
+  object-position: center 24%;
+  border: 1px solid rgba(255,240,213,.55);
+  filter: saturate(.78) contrast(1.08);
+}
+.black-hole-rings b.has-photo {
+  overflow: hidden;
+  background: #090810;
+}
+.black-hole-rings b .einstein-map-photo {
+  border-radius: 50%;
+  object-position: center 24%;
+  filter: grayscale(.58) contrast(1.12);
+}
+@media (max-width: 700px) {
+  .node-planet .node-photo { object-position: center 25%; }
+}
