@@ -3696,3 +3696,15 @@ body::before {
   justify-self: end;
   margin-left: auto;
 }
+
+
+/* 1.2.5 — clean scientist map: remove technical HUD and decorative callouts. */
+#systemShell .map-hud,
+#systemShell .camera-hint,
+#systemShell .system-center-label,
+#systemShell .system-scale,
+#systemShell .system-callout {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
